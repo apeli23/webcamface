@@ -13,7 +13,7 @@ const HTTP_SUCCESS = 200;
 
 const cld = new Cloudinary({
   cloud: {
-    cloudName: process.env.CLOUDINARY_NAME,
+    cloudName: "dewuuj0rm",
   },
 });
 
