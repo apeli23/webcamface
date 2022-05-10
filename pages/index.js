@@ -2,18 +2,18 @@ import React, { useRef, useState } from "react";
 import { AdvancedVideo } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 
-// Import required actions and qualifiers.
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { Gravity } from "@cloudinary/url-gen/qualifiers";
 import { AutoFocus } from "@cloudinary/url-gen/qualifiers/autoFocus";
 
 const HTTP_SUCCESS = 200;
+const VIDEO_HEIGHT = 450;
+const VIDEO_WIDTH = 800;
 
 const cld = new Cloudinary({
   cloud: {
-    cloudName: "dewuuj0rm",
+    cloudName: "hackit-africa",
   },
 });
 
@@ -24,7 +24,7 @@ export default function Home() {
   let mediaRecorder = null;
 
   const rawVideo = useRef();
-  const [publicID, setPublicID] = useState("louydpsix10lwwlbmhui");
+  const [publicID, setPublicID] = useState("bcffgeg9cnjryfqdghz8");
 
   function readFile(file) {
     console.log("readFile()=>", file);
@@ -103,23 +103,21 @@ export default function Home() {
 
   const myVideo = cld.video(publicID);
   // Apply the transformation.
-  myVideo
-    .resize(
-      fill()
-        .width(150)
-        .height(150)
-        .gravity(
-          Gravity.autoGravity().autoFocus(AutoFocus.focusOn(FocusOn.faces()))
-        )
-    ) // Crop the video, focusing on the faces.
-    .roundCorners(byRadius(20)); // Round the corners.
+  myVideo.resize(
+    fill()
+      .width(VIDEO_WIDTH)
+      .height(VIDEO_HEIGHT)
+      .gravity(
+        Gravity.autoGravity().autoFocus(AutoFocus.focusOn(FocusOn.faces()))
+      )
+  );
 
   return (
     <div>
       <video
         className="display"
-        width={800}
-        height={450}
+        width={VIDEO_WIDTH}
+        height={VIDEO_HEIGHT}
         ref={rawVideo}
         autoPlay
         playsInline
