@@ -113,22 +113,36 @@ export default function Home() {
   );
 
   return (
-    <div>
-      <video
-        className="display"
-        width={VIDEO_WIDTH}
-        height={VIDEO_HEIGHT}
-        ref={rawVideo}
-        autoPlay
-        playsInline
-      ></video>
-      <button className="button" onClick={startCamHandler}>
-        Start Webcam
-      </button>
-      <button className="button" onClick={stopCamHandler}>
-        Close and upload original video
-      </button>
-      {publicID && <AdvancedVideo cldVid={myVideo} controls />}
+    <div className="container">
+      <h1>Auto-focusing faces in web-cam videos using next js</h1>
+      <div className="row">
+        <div className="column">
+          <video
+            className="display"
+            width={VIDEO_WIDTH}
+            height={VIDEO_HEIGHT}
+            ref={rawVideo}
+            autoPlay
+            playsInline
+          />
+        </div>
+        <div className="column">
+          {publicID && <AdvancedVideo cldVid={myVideo} controls />}
+        </div>
+
+      </div>
+      <div className="row">
+        <div className="column">
+          <div className="buttons">
+            <button className="button" onClick={startCamHandler}>
+              Start Webcam
+            </button>{' '}
+            <button id="close" className="button" onClick={stopCamHandler}>
+              Close and upload original video
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
