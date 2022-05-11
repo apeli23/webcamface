@@ -24,7 +24,7 @@ export default function Home() {
   let mediaRecorder = null;
 
   const rawVideo = useRef();
-  const [publicID, setPublicID] = useState("bcffgeg9cnjryfqdghz8");
+  const [publicID, setPublicID] = useState();
 
   function readFile(file) {
     console.log("readFile()=>", file);
