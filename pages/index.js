@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { AdvancedVideo } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
-
+import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { Gravity } from "@cloudinary/url-gen/qualifiers";
@@ -103,14 +103,16 @@ export default function Home() {
 
   const myVideo = cld.video(publicID);
   // Apply the transformation.
-  myVideo.resize(
-    fill()
-      .width(VIDEO_WIDTH)
-      .height(VIDEO_HEIGHT)
-      .gravity(
-        Gravity.autoGravity().autoFocus(AutoFocus.focusOn(FocusOn.faces()))
-      )
-  );
+  myVideo
+    .resize(
+      fill()
+        .width(150)
+        .height(150)
+        .gravity(
+          Gravity.autoGravity().autoFocus(AutoFocus.focusOn(FocusOn.faces()))
+        )
+    )
+    .roundCorners(byRadius(20));
 
   return (
     <div className="container">
@@ -119,7 +121,7 @@ export default function Home() {
         <div className="column">
           <video
             className="display"
-            width={VIDEO_WIDTH}
+            width={400}
             height={VIDEO_HEIGHT}
             ref={rawVideo}
             autoPlay
@@ -129,14 +131,13 @@ export default function Home() {
         <div className="column">
           {publicID && <AdvancedVideo cldVid={myVideo} controls />}
         </div>
-
       </div>
       <div className="row">
         <div className="column">
           <div className="buttons">
             <button className="button" onClick={startCamHandler}>
               Start Webcam
-            </button>{' '}
+            </button>
             <button id="close" className="button" onClick={stopCamHandler}>
               Close and upload original video
             </button>
