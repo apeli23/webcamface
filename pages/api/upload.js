@@ -7,7 +7,7 @@ cloudinary.config({
   // upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
 });
 
-export const config = {
+const config = {
   api: {
     bodyParser: {
       sizeLimit: "200mb",

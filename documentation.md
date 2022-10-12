@@ -226,7 +226,7 @@ const myVideo = cld.video(publicID);
 
 ```
 
-Finally, we will have the `uploadHandler` function to post the videos to the backend and use the response to set the video's public Id using the `setPublicID` state hook.
+Use the `uploadHandler` function to post the videos to the backend and use the response to set the video's public Id using the `setPublicID` state hook.
 
 ```
 "pages/index"
@@ -254,7 +254,7 @@ const uploadVideo = async (base64) => {
 };
 ```
 
-Use the code below to fill the DOM elements in your return statements. The css is in the Github repo.
+Finally, use the code below to fill the DOM elements in your return statements. The css is in the Github repo. The code below will complete the last one required. The the distance between the user and the webcam will at times affect the functionality. At times the further the user 's face is the more accurate the app will detect it.
 ```
 "pages/index"
 
